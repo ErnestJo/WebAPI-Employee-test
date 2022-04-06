@@ -18,3 +18,14 @@ C:\Users\julie\Desktop\project\EmployeeTestWebApi\EmployeeTestWebApi\obj\Debug\n
 C:\Users\julie\Desktop\project\EmployeeTestWebApi\EmployeeTestWebApi\obj\Debug\netcoreapp3.1\EmployeeTestWebApi.dll
 C:\Users\julie\Desktop\project\EmployeeTestWebApi\EmployeeTestWebApi\obj\Debug\netcoreapp3.1\EmployeeTestWebApi.pdb
 C:\Users\julie\Desktop\project\EmployeeTestWebApi\EmployeeTestWebApi\obj\Debug\netcoreapp3.1\EmployeeTestWebApi.genruntimeconfig.cache
+C:\Users\julie\Desktop\project\EmployeeTestWebApi\EmployeeTestWebApi\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\julie\Desktop\project\EmployeeTestWebApi\EmployeeTestWebApi\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\julie\Desktop\project\EmployeeTestWebApi\EmployeeTestWebApi\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\julie\Desktop\project\EmployeeTestWebApi\EmployeeTestWebApi\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+C:\Users\julie\Desktop\project\EmployeeTestWebApi\EmployeeTestWebApi\obj\Debug\netcoreapp3.1\EmployeeTestWebApi.csproj.CopyComplete
+C:\Users\julie\Desktop\project\EmployeeTestWebApi\EmployeeTestWebApi\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+C:\Users\julie\Desktop\project\EmployeeTestWebApi\EmployeeTestWebApi\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+C:\Users\julie\Desktop\project\EmployeeTestWebApi\EmployeeTestWebApi\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+C:\Users\julie\Desktop\project\EmployeeTestWebApi\EmployeeTestWebApi\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+C:\Users\julie\Desktop\project\EmployeeTestWebApi\EmployeeTestWebApi\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\julie\Desktop\project\EmployeeTestWebApi\EmployeeTestWebApi\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
