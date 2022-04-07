@@ -10,13 +10,14 @@ using EmployeeTestWebApi.Models;
 
 namespace EmployeeTestWebApi.Controllers
 {
+
     [Route("api/[controller]")]
     [ApiController]
-    public class DerpatmentController : Controller
+    public class EmployeeController : Controller
     {
-            private readonly IConfiguration _configuration;
+     private readonly IConfiguration _configuration;
 
-        public DerpatmentController(IConfiguration configuration)
+        public EmployeeController(IConfiguration configuration)
         {
             _configuration = configuration;
         }
@@ -25,8 +26,10 @@ namespace EmployeeTestWebApi.Controllers
         public JsonResult Get()
         {
             string query = @"
-                            select DerpatmentId, DerpatmentName from
-                            dbo.Derpatment
+                            select EmployeeId, EmployeeName, Derpatment,
+                            convert(varchar(10), DateOfJoining, 120) as DateOfJoining, PhotoFileName
+                           from
+                            dbo.Employee
                             ";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("EmployeeAppCon");
@@ -45,13 +48,13 @@ namespace EmployeeTestWebApi.Controllers
             return new JsonResult(table);
         }
 
-
         [HttpPost]
-        public JsonResult Post(Derpatment dep )
+        public JsonResult Post(Employee Emp)
         {
             string query = @"
-                            insert into dbo.Derpatment
-                            values (@DerpatmentName)
+                            insert into dbo.Employee
+                            (EmployeeName,Derpatment,DateOfJoining,PhotoFileName)
+                            values (@EmployeeName, @Derpartment, @DateOfJoining, @PhotoFileName)
                             ";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("EmployeeAppCon");
@@ -61,7 +64,10 @@ namespace EmployeeTestWebApi.Controllers
                 myCon.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
-                    myCommand.Parameters.AddWithValue("@DerpatmentName", dep.DerpatmentName);
+                    myCommand.Parameters.AddWithValue("@EmployeeName", Emp.EmployeeName);
+                    myCommand.Parameters.AddWithValue("@Derpartment", Emp.Derpatment);
+                    myCommand.Parameters.AddWithValue("@DateOfJoining", Emp.DateOfJoining);
+                    myCommand.Parameters.AddWithValue("@PhotoFileName", Emp.PhotoFileName);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();
@@ -72,12 +78,15 @@ namespace EmployeeTestWebApi.Controllers
         }
 
         [HttpPut]
-        public JsonResult Put(Derpatment dep)
+        public JsonResult Put(Employee Emp) 
         {
             string query = @"
-                            update dbo.Derpatment
-                            set DerpatmentName= (@DerpatmentName)
-                            where DerpatmentId=@DerpatmentId
+                            update  dbo.Employee
+                            set EmployeeName= (@EmployeeName),
+                            Derpatment= (@Derpatment),
+                            DateOfJoining= (@DateOfJoining),
+                            PhotoFileName= (@PhotoFileName)
+                            where EmployeeId=@EmployeeId
                             ";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("EmployeeAppCon");
@@ -87,8 +96,11 @@ namespace EmployeeTestWebApi.Controllers
                 myCon.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
-                    myCommand.Parameters.AddWithValue("@DerpatmentId", dep.DerpatmentId);
-                    myCommand.Parameters.AddWithValue("@DerpatmentName", dep.DerpatmentName);
+                    myCommand.Parameters.AddWithValue("@EmployeeId", Emp.EmployeeId);
+                    myCommand.Parameters.AddWithValue("@EmployeeName", Emp.EmployeeName);
+                    myCommand.Parameters.AddWithValue("@Derpatment", Emp.Derpatment);
+                    myCommand.Parameters.AddWithValue("@DateOfJoining", Emp.DateOfJoining);
+                    myCommand.Parameters.AddWithValue("@PhotoFileName", Emp.PhotoFileName);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();
@@ -102,8 +114,8 @@ namespace EmployeeTestWebApi.Controllers
         public JsonResult Delete(int id)
         {
             string query = @"
-                            delete from dbo.Derpatment
-                            where DerpatmentId=@DerpatmentId
+                            delete from dbo.Employee
+                            where EmployeeId=@EmployeeId
                             ";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("EmployeeAppCon");
@@ -113,7 +125,7 @@ namespace EmployeeTestWebApi.Controllers
                 myCon.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
-                    myCommand.Parameters.AddWithValue("@DerpatmentId", id);
+                    myCommand.Parameters.AddWithValue("@EmployeeId", id);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();
@@ -122,6 +134,5 @@ namespace EmployeeTestWebApi.Controllers
             }
             return new JsonResult("Deleted succeffuly");
         }
-
     }
 }
